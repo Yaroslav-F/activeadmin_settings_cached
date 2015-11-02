@@ -1,12 +1,15 @@
 module SettingsHelper
-  def settings_field_options(settings_name)
+  def settings_field_options(settings_name, value)
     default_value = ActiveadminSettingsCached.defaults[settings_name]
-    value = ActiveadminSettingsCached.settings[settings_name]
 
     input_opts = if default_value.is_a?(Array)
                   {
                     collection: default_value,
                     selected: value,
+                  }
+                elsif [true, false].include?(default_value)
+                  {
+                    checked: value
                   }
                 else
                   {
