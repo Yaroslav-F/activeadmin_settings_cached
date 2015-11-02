@@ -7,7 +7,7 @@ module SettingsHelper
                     collection: default_value,
                     selected: value,
                   }
-                elsif ["true", "false"].include?(default_value)
+                elsif [true, false].include?(default_value)
                   {
                     checked: value
                   }
